@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Are you sure?</h1>
+
+<form class="validate-form form" [formGroup]="subscriptionForm" (ngSubmit)="subscribeTo(subscriptionForm)" autocomplete="off">
+    <div mat-dialog-content>
+        <mat-form-field class="form-group">
+            <input matInput [(ngModel)]="data.name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="form-group" *ngIf="data.type == 'GP' || data.type =='SP'">
+            <input matInput [(ngModel)]="data.type" formControlName="type">
+        </mat-form-field>
+        <mat-form-field class="form-group" *ngIf="(data.type == 'ES' || data.type =='CS')">
+            <input matInput [(ngModel)]="data.type" formControlName="type">
+        </mat-form-field>
+        <mat-form-field class="form-group" *ngIf="(data.type == 'IC')">
+            <input matInput [(ngModel)]="data.type" formControlName="type">
+        </mat-form-field>
+        <mat-form-field class="form-group">
+            <input matInput [(ngModel)]="data.price" formControlName="price">
+        </mat-form-field>       
+        <div class="sub-periods" *ngIf="data.type == 'GP' || 'SP'">
+            <mat-radio-group aria-label="" [(ngModel)]="period" formControlName="period" required>
+                <mat-radio-button value="30" checked >1 Month</mat-radio-button>
+                <mat-radio-button value="60">2 Month</mat-radio-button>
+                <mat-radio-button value="90">3 Month</mat-radio-button>
+            </mat-radio-group>
+            <!-- <mat-error [hidden]="!subscriptionForm.controls['period'].errors.required">Please Select the Month</mat-error> -->
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button class="btn inline-block btn-custom" mat-raised-button (click)="onNoClick()">No Thanks</button>
+        <button class="btn inline-block btn-custom" mat-raised-button type="submit" color="primary" [mat-dialog-close]="subscriptionForm.status == 'VALID'" cdkFocusInitial>Yes</button>
+    </div>
+</form>

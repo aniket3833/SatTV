@@ -1,0 +1,35 @@
+.mat-form-field {
+    display: block;
+    position: relative;
+    text-align: left;
+    width: 50%;
+    height: 65px;
+    margin: auto;
+}
+
+mat-card.card-layout.mat-card {
+    width: 50%;
+    margin: auto;
+    top: 50px;
+}
+
+.mat-error {
+    display: block;
+    width: 50%;
+    margin: 0px auto 8px auto;
+}
+
+.mat-form-field-wrapper{
+    padding-bottom: 0 !important;
+}
+
+.container-login100-form-btn {
+    width: 50%;
+    margin: auto;
+}
+
+button.mat-raised-button {
+    width: 44%;
+    margin: 8px;
+    display: inline-block;
+}

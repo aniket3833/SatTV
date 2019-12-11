@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark shrink" id="banner">
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#"><span>SAT TV</span>Home</a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <!-- Dropdown Subscription-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        Subscription
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" [routerLink]="['subscription/Packages']" routerLinkActive="router-link-active">Packages</a>
+                        <a class="dropdown-item" [routerLink]="['subscription/Services']" routerLinkActive="router-link-active" >Services</a>
+                        <a class="dropdown-item" [routerLink]="['subscription/Channels']" routerLinkActive="router-link-active" >Add-on Channels</a>
+                    </div>
+                </li>
+                <!-- Dropdown User-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown">
+                        User Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" [routerLink]="['user/mysub']" routerLinkActive="router-link-active" >My Subscription</a>
+                        <a class="dropdown-item" [routerLink]="['user/account']" routerLinkActive="router-link-active" >Account</a>
+                        <a class="dropdown-item" [routerLink]="['user/account-details']" routerLinkActive="router-link-active" >Personal Details</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
