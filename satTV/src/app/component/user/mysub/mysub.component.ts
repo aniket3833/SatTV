@@ -43,13 +43,13 @@ export class MysubComponent implements OnInit {
   goto(type: string) {
     switch(type) {
       case 'package': 
-        this.route.navigate['subscription/Packages'];
+        this.route.navigate(['subscription/Packages']);
         break;
       case 'service':
-        this.route.navigate['subscription/Services'];
+        this.route.navigate(['subscription/Services']);
         break;
       case 'channel':
-        this.route.navigate['subscription/Channels'];
+        this.route.navigate(['subscription/Channels']);
         break;
       default: break;
     }

@@ -27,7 +27,7 @@
     </mat-card>
 </div>
 <div class="my-services">
-    <mat-grid-list class="list" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)" [hidden]="!sub_services">
+    <mat-grid-list class="list" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)" [hidden]="!sub_services?.length">
         <mat-grid-tile class="tile" *ngFor="let service of sub_services" [colspan]="1" [rowspan]="1"
             >
             <mat-card class="example-card list-item">
@@ -52,7 +52,7 @@
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
-    <mat-card class="subscribe-new" [hidden]="sub_services">
+    <mat-card class="subscribe-new" [hidden]="sub_services?.length">
         <mat-card-actions>
             <button mat-button mat-raised-button color="primary" (click)="goto('service')">
                 Subscribe New Service
@@ -63,7 +63,7 @@
 <div class="my-services">
     <mat-grid-list class="list" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)">
         <mat-grid-tile class="tile" *ngFor="let channel of sub_channels" [colspan]="1" [rowspan]="1"
-            [hidden]="!sub_channels">
+            [hidden]="!sub_channels?.length">
             <mat-card class="example-card list-item">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -86,7 +86,7 @@
             </mat-card>
         </mat-grid-tile>
         
-        <mat-card class="subscribe-new" [hidden]="sub_channels || sub_channels.length != 0">
+        <mat-card class="subscribe-new" [hidden]="sub_channels?.length">
             <mat-card-actions>
                 <button mat-button mat-raised-button color="primary" (click)="goto('channel')">
                     Subscribe New Channel
