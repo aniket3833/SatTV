@@ -27,7 +27,14 @@ export class Channel {
     price: number;
     expDt: string;
     subDt: string;
-    isActive: number
+    isActive: number;
+}
+
+export class Plan {
+    name: string;
+    type: string;
+    amount: number;
+    imgsrc: string;
 }
 
 export let packages: Package[] = [
@@ -72,7 +79,7 @@ export let services: Service[] = [
     {
         name: "Learn Cooking",
         type: "CS",
-        desc: "LEarn Cooking effictively",
+        desc: "Learn Cooking effictively",
         price: 100,
         expDt: "",
         subDt: "",
@@ -126,4 +133,31 @@ export let channelsList: Channel[] = [
         subDt: "",
         isActive: 0
     }
+];
+
+export let plans: Plan[] = [
+    {
+        name: "Bandhan",
+        type: "top-up",
+        amount: 500,
+        imgsrc: ""
+    },
+    {
+        name: "Freedom",
+        type: "top-up",
+        amount: 1000,
+        imgsrc: ""
+    },
+    {
+        name: "Dhamaka",
+        type: "top-up",
+        amount: 300,
+        imgsrc: ""
+    },
+    {
+        name: "Chotu",
+        type: "top-up",
+        amount: 100,
+        imgsrc: ""
+    },
 ]

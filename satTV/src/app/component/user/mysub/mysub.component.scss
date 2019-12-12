@@ -1,0 +1,53 @@
+mat-grid-list.list.mat-grid-list {
+    height: 100%;
+    padding-bottom: 0px !important;
+}
+
+.my-pack {
+    margin: auto;
+    width: 98%;
+    vertical-align: middle;
+}
+
+.my-services {
+    width: 98%;
+    margin: 10px;
+    box-shadow: 0 1px 3px 0px rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    border-radius: 6PX;
+    height: 300px;
+}
+
+mat-grid-tile.tile.mat-grid-tile.ng-star-inserted {
+    margin: 5px;
+    height: 100%;
+}
+
+mat-card.example-card.list-item.mat-card {
+    width: 224px;
+    margin: 10px 10px 10px 10px;
+}
+
+.account-balance{
+    width: 98%;
+    margin: 10px;
+    box-shadow: 0 1px 3px 0px rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    border-radius: 6PX;
+    height: 300px;
+    overflow-y: overlay;
+}
+
+mat-card.example-card.list-item.top-ups.mat-card.ng-star-inserted {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+section.row.account-summary {
+    width: 98%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+h5.row {
+    width: 98%;
+    margin: 25px auto 15px auto;
+}

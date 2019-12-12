@@ -3,7 +3,7 @@ import { Package } from '../model/subscription';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../model/user';
 
@@ -11,6 +11,7 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class UserService {
+  isLogin: boolean = false;
   url = environment.firebaseConfig.databaseURL;
   db = environment.collection;
 

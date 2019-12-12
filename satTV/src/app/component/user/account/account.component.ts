@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -14,7 +15,11 @@ export class AccountComponent implements OnInit {
   user: any;
   error: any;
 
-  constructor(private fb: FormBuilder, private service: UserService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private service: UserService,
+    private route: Router
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -32,10 +37,14 @@ export class AccountComponent implements OnInit {
     if(this.loginForm.valid && this.users.length > 0) {
       for(var user of this.users) {
         if (user['email'] == this.loginForm.value.email && user['phone'] == this.loginForm.value.phone){
-          const id = user['id'];
+          this.service.isLogin = true;
+          this.route.navigate(['/home']);
+          localStorage.setItem('user', JSON.stringify(user));
           console.log('Logged In Successfully');
         }
       }
+    } else { //For Testing only after that remove the code in else block
+      this.route.navigate(['user/mysub']);
     }
   }
 

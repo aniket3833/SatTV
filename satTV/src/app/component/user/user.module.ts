@@ -16,7 +16,8 @@ import {
   MatDividerModule,
   MatFormFieldModule,
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatGridListModule
 } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
 
@@ -35,7 +36,8 @@ import { UserService } from 'src/app/services/user.service';
     MatDividerModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
   ],
   providers:[UserService]
 })

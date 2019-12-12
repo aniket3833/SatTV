@@ -1,1 +1,125 @@
-<p>mysub works!</p>
+<div class="my-pack">
+    <mat-card class="example-card list-item" *ngIf="package.hasOwnProperty('name')">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{package.name}}</mat-card-title>
+            <mat-card-subtitle>
+                <span class="type">
+                    {{package.type}}
+                </span>
+                <span class="expiry">
+                    {{package.expDt | date: 'fulldate'}}
+                </span>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{package.imgsrc}}">
+        <mat-card-content>
+            <p>
+                {{package.desc}}
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="subscribe-new" *ngIf="!package.hasOwnProperty('name')">
+        <mat-card-actions>
+            <button mat-button mat-raised-button color="primary" (click)="goto('package')">Subscribe New
+                Package</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div class="my-services">
+    <mat-grid-list class="list" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)" [hidden]="!sub_services">
+        <mat-grid-tile class="tile" *ngFor="let service of sub_services" [colspan]="1" [rowspan]="1"
+            >
+            <mat-card class="example-card list-item">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{service.name}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="type">
+                            {{service.type}}
+                        </span>
+                        <span class="expiry">
+                            {{service.expDt | date: 'fulldate'}}
+                        </span>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{service.imgsrc}}">
+                <mat-card-content>
+                    <p>
+                        {{service.desc}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-card class="subscribe-new" [hidden]="sub_services">
+        <mat-card-actions>
+            <button mat-button mat-raised-button color="primary" (click)="goto('service')">
+                Subscribe New Service
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div class="my-services">
+    <mat-grid-list class="list" [cols]="breakpoint" [rowHeight]="ratio" (window:resize)="onResize($event)">
+        <mat-grid-tile class="tile" *ngFor="let channel of sub_channels" [colspan]="1" [rowspan]="1"
+            [hidden]="!sub_channels">
+            <mat-card class="example-card list-item">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{channel.name}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="type">
+                            {{channel.type}}
+                        </span>
+                        <span class="expiry">
+                            {{channel.expDt | date: 'fulldate'}}
+                        </span>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{channel.imgsrc}}">
+                <mat-card-content>
+                    <p>
+                        {{channel.desc}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        
+        <mat-card class="subscribe-new" [hidden]="sub_channels || sub_channels.length != 0">
+            <mat-card-actions>
+                <button mat-button mat-raised-button color="primary" (click)="goto('channel')">
+                    Subscribe New Channel
+                </button>
+            </mat-card-actions>
+        </mat-card>
+        
+    </mat-grid-list>
+</div>
+<div class="account-balance">
+    <section class="row account-summary">
+        <div class="balance">
+            <div class="amount">
+                Youar Account Balance {{user.balance}}
+            </div>
+        </div>
+    </section>
+    <h5 class="row"> Available Recharge Plans</h5>
+    <mat-card class="example-card list-item top-ups" *ngFor="let plan of plans">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{plan.name}}</mat-card-title>
+            <mat-card-subtitle>
+                <span class="type">
+                    {{plan.type}}
+                </span>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{plan.imgsrc}}">
+        <mat-card-content>
+            <h1>
+                {{plan.amount}}
+            </h1>
+        </mat-card-content>
+    </mat-card>
+</div>

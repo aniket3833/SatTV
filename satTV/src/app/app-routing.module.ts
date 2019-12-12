@@ -13,8 +13,13 @@ const routes: Routes = [
     loadChildren: './component/user/user.module#UserModule'
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
+  },
+  {
+    path: '',
+    redirectTo: 'user',
+    pathMatch: 'full'
   }
 ];
 

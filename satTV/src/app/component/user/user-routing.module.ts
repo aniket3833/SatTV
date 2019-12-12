@@ -17,6 +17,11 @@ const routes: Routes = [
   {
     path: 'account-details',
     component: AccountDetailsComponent
+  },
+  {
+    path: '',
+    redirectTo: 'account',
+    pathMatch: 'full'
   }
 ];
 
