@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { Router } from '@angular/router';
-import { services, channelsList, plans } from 'src/app/model/subscription';
+import { plans } from 'src/app/model/subscription';
 
 @Component({
   selector: 'app-mysub',
@@ -25,9 +25,6 @@ export class MysubComponent implements OnInit {
 
   ngOnInit() {
     this.resize(window.innerWidth);
-    this.sub_services = services;
-    this.sub_channels = channelsList;
-    this.plans = plans;
     this.user = JSON.parse(localStorage.getItem('user'));
     if(this.user) {
       this.getSubscriptionsForUser(this.user);
@@ -35,6 +32,7 @@ export class MysubComponent implements OnInit {
   }
 
   getSubscriptionsForUser(user: any) {
+    this.plans = plans;
     this.package = user.cr_pack;
     this.sub_services = user.cr_service;
     this.sub_channels = user.cr_channel;

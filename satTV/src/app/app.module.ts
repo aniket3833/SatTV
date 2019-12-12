@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,15 +20,22 @@ import {
   MatFormFieldModule,
   MatDialogModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatRippleModule,
+  MatDividerModule
 } from '@angular/material';
+import { AccountComponent } from './component/account/account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    DialogComponent
+    DialogComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -35,11 +43,18 @@ import {
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatRadioModule,
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatRippleModule,
+    MatDividerModule,
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule

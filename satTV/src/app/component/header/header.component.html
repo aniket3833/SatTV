@@ -17,9 +17,9 @@
                         Subscription
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" [routerLink]="['subscription/Packages']" routerLinkActive="router-link-active">Packages</a>
-                        <a class="dropdown-item" [routerLink]="['subscription/Services']" routerLinkActive="router-link-active" >Services</a>
-                        <a class="dropdown-item" [routerLink]="['subscription/Channels']" routerLinkActive="router-link-active" >Add-on Channels</a>
+                        <a class="dropdown-item" [routerLink]="['subscription/Packages']" routerLinkActive="router-link-active" [attr.disabled]="!isLogin">Packages</a>
+                        <a class="dropdown-item" [routerLink]="['subscription/Services']" routerLinkActive="router-link-active" [attr.disabled]="!isLogin">Services</a>
+                        <a class="dropdown-item" [routerLink]="['subscription/Channels']" routerLinkActive="router-link-active" [attr.disabled]="!isLogin">Add-on Channels</a>
                     </div>
                 </li>
                 <!-- Dropdown User-->
@@ -29,7 +29,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['user/mysub']" routerLinkActive="router-link-active" >My Subscription</a>
-                        <a class="dropdown-item" [routerLink]="['user/account']" routerLinkActive="router-link-active" >Account</a>
+                        <!-- <a class="dropdown-item" [routerLink]="['user/account']" routerLinkActive="router-link-active" >Account</a> -->
                         <a class="dropdown-item" [routerLink]="['user/account-details']" routerLinkActive="router-link-active" >Personal Details</a>
                     </div>
                 </li>

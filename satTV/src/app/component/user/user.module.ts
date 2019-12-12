@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { UserRoutingModule } from '../user/user-routing.module';
 import { MysubComponent } from '../user/mysub/mysub.component';
-import { AccountComponent } from '../user/account/account.component';
+import { AccountComponent } from '../account/account.component';
 import { AccountDetailsComponent } from '../user/account-details/account-details.component';
 
 import {
@@ -22,7 +22,7 @@ import {
 import { UserService } from 'src/app/services/user.service';
 
 @NgModule({
-  declarations: [MysubComponent, AccountComponent, AccountDetailsComponent],
+  declarations: [MysubComponent, AccountDetailsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
