@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -6,12 +6,18 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  isLogin: Boolean = false;
-  constructor(private user: UserService) { }
+export class HeaderComponent implements OnInit, OnChanges {
+  isLogin: any = false;
+  constructor(private service: UserService) { }
 
-  ngOnInit() {
-    this.isLogin = this.user.isLogin;
+  ngOnChanges() {
+    if(this.service.currentUser) {
+      this.isLogin = true;
+    } else {
+      this.isLogin = false;
+    }
   }
 
+  ngOnInit() {
+  }
 }

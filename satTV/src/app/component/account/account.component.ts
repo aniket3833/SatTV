@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/model/user';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-account',
@@ -19,11 +19,14 @@ export class AccountComponent implements OnInit {
     private fb: FormBuilder, 
     private service: UserService,
     private route: Router
-  ) { }
+    ) {
+      if(this.service.CurrentUserValue) {
+        this.route.navigate(['/home']);
+      }
+  }
 
   ngOnInit() {
     this.initForm();
-    this.getAllUser();
   }
 
   initForm() {
@@ -34,15 +37,24 @@ export class AccountComponent implements OnInit {
   }
 
   login() {
-    if(this.loginForm.valid && this.users.length > 0) {
-      for(var user of this.users) {
-        if (user['email'] == this.loginForm.value.email && user['phone'] == this.loginForm.value.phone){
-          this.service.isLogin = true;
-          this.route.navigate(['/home']);
-          localStorage.setItem('user', JSON.stringify(user));
-          console.log('Logged In Successfully');
-        }
-      }
+    if(this.loginForm.valid) {
+      this.service.getUser(this.loginForm.value.email, this.loginForm.value.phone).subscribe(data => {
+        data.map( e=> {
+          this.user =  {
+             id: e.payload.doc.id,
+             ...e.payload.doc.data()
+           } as User
+           if (this.user['email'] == this.loginForm.value.email && this.user['phone'] == this.loginForm.value.phone){
+              localStorage.setItem('user', JSON.stringify(this.user));
+              this.service.currentUserSubject.next(this.user);
+              this.route.navigate(['/home']);
+              console.log('Logged In Successfully');
+           }
+         })
+       }, error => {
+         this.error = error.message;
+         console.log(error);
+       });    
     } else { //For Testing only after that remove the code in else block
       this.route.navigate(['user/mysub']);
     }
@@ -64,21 +76,6 @@ export class AccountComponent implements OnInit {
     }).catch(error => {
       console.log(error)
     });
-  }
-
-  getAllUser() {
-    this.service.getAllUser().subscribe(data => {
-      this.users = data.map( e=> {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data()
-        }as User
-      })
-    console.log(this.users);
-    }, error => {
-      this.error = error.message;
-      console.log(error)
-    })
   }
 
 }

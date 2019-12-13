@@ -8,5 +8,6 @@ export class User {
     cr_pack: Package;
     cr_service: Service;
     cr_channel: Channel;
+    token: string;
     isActive: number;
 }
