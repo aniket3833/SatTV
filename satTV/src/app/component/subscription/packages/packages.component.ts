@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ComponentFactoryResolver, ViewContainerRef } 
 import { packages } from '../../../model/subscription'
 import { DialogComponent } from '../../dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-packages',
@@ -10,9 +11,13 @@ import { MatDialog } from '@angular/material';
 })
 export class PackagesComponent implements OnInit {
   @Input() subPackages = packages;
+  user: any;
 
-  constructor(public dialog: MatDialog) {
-
+  constructor(
+    public dialog: MatDialog,
+    private service: UserService
+  ) {
+    this.user = this.service.CurrentUserValue;
   }
 
   ngOnInit() {

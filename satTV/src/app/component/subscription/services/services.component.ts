@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { services } from '../../../model/subscription'
+import { services, Service } from '../../../model/subscription'
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../dialog/dialog.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-services',
@@ -10,10 +11,18 @@ import { DialogComponent } from '../../dialog/dialog.component';
 })
 export class ServicesComponent implements OnInit {
   @Input() services = services;
+  user: any;
+  sub_services: Service;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private service: UserService
+  ) { 
+    
+  }
 
   ngOnInit() {
+    this.user = this.service.CurrentUserValue;
   }
 
   subscribe(subscription: any, i: number, type: string) {

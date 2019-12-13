@@ -12,7 +12,15 @@
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button mat-raised-button color="primary" (click)="subscribe(package, i, 'package')">SUBSCRIBE</button>
+            <button 
+                mat-button 
+                mat-raised-button 
+                color="primary" 
+                [disabled]="user.cr_pack.isActive == 1"
+                (click)="subscribe(package, i, 'package')"
+            > 
+            SUBSCRIBE
+        </button>
         </mat-card-actions>
     </mat-card>
 </div>

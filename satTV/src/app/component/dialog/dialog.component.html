@@ -28,6 +28,14 @@
     </div>
     <div mat-dialog-actions>
         <button class="btn inline-block btn-custom" mat-raised-button (click)="onNoClick()">No Thanks</button>
-        <button class="btn inline-block btn-custom" mat-raised-button type="submit" color="primary" [mat-dialog-close]="subscriptionForm.status == 'VALID'" cdkFocusInitial>Yes</button>
+        <button 
+            class="btn inline-block btn-custom" 
+            mat-raised-button type="submit" 
+            color="primary" 
+            [mat-dialog-close]="subscriptionForm.status == 'VALID'" 
+            cdkFocusInitial
+        >
+            Yes
+        </button>
     </div>
 </form>

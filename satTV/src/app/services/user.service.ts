@@ -43,6 +43,8 @@ export class UserService {
   }
 
   updateUser(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUserSubject.next(user);
     return this.firestore.doc(this.userDB + '/' + user.id).update(user);
   }
 
@@ -51,7 +53,7 @@ export class UserService {
   }
 
   rechargeAccount(plan: Plan) {
-    let tx = new Transaction(this.CurrentUserValue.email, plan, 'tx_' + Math.floor(100000000 + Math.random() * 900000000), new Date());
+    let tx = new Transaction(this.CurrentUserValue.email, plan, 'tx_' + Math.floor(100000000 + Math.random() * 900000000), new Date().toString());
     tx = JSON.parse(JSON.stringify(tx));
     return this.firestore.collection(this.txDB).add(tx);
   }

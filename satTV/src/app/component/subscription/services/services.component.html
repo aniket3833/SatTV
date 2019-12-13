@@ -11,8 +11,21 @@
                 {{service.desc}}
             </p>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button mat-raised-button color="primary" (click)="subscribe(service, i, 'service')">SUBSCRIBE</button>
+        <mat-card-actions [hidden]="user.cr_service?.length >= services.length">
+            <button 
+                mat-button 
+                mat-raised-button 
+                color="primary"
+                [disabled]="user.cr_service[i]?.name == service.name"
+                (click)="subscribe(service, i, 'service')"
+            >
+                SUBSCRIBE
+            </button>
         </mat-card-actions>
+        <!-- <mat-card-actions [hidden]="!user.cr_service?.length >= services.length">
+            <p>
+                Already Subscribed !!
+            </p>
+        </mat-card-actions> -->
     </mat-card>
 </div>

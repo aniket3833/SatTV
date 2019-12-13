@@ -11,8 +11,21 @@
                 {{channel.desc}}
             </p>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button mat-raised-button color="primary" (click)="subscribe(channel, i, 'channel')">SUBSCRIBE</button>
+        <mat-card-actions [hidden]="user.cr_channel?.length >= channels.length">
+            <button 
+                mat-button 
+                mat-raised-button 
+                color="primary" 
+                [disabled]="user.cr_channel[i]?.name == channel.name || user.cr_pack?.channelList[i] == channel.name"
+                (click)="subscribe(channel, i, 'channel')"
+            >
+                SUBSCRIBE
+            </button>
         </mat-card-actions>
+        <!-- <mat-card-actions [hidden]="!user.cr_channel?.length >= channels.length">
+            <p>
+                Already Subscribed !!
+            </p>
+        </mat-card-actions> -->
     </mat-card>
 </div>

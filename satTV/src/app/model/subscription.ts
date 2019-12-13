@@ -43,9 +43,9 @@ export class Transaction {
     user: string;
     plan: Plan;
     txid: string;
-    txdt: Date
+    txdt: string
 
-    constructor(user: string, plan: Plan, txid: string, txdt: Date) {
+    constructor(user: string, plan: Plan, txid: string, txdt: string) {
         this.user = user;
         this.plan = plan;
         this.txid = txid;
