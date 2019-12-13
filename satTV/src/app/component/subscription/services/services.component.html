@@ -1,1 +1,18 @@
-<p>services works!</p>
+<div class="list-services">
+    <mat-card class="example-card list-item" *ngFor="let service of services; let i = index">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{service.name}}</mat-card-title>
+            <mat-card-subtitle>{{service.type}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{service.imgsrc}}">
+        <mat-card-content>
+            <p>
+                {{service.desc}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button mat-raised-button color="primary" (click)="subscribe(service, i, 'service')">SUBSCRIBE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

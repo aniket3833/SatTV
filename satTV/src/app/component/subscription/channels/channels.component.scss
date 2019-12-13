@@ -1,0 +1,11 @@
+.list-channels {
+    padding-top: 70px;
+}
+
+mat-card.example-card.list-item.mat-card {
+    width: 350px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 32px;
+    box-shadow: 0 1px 3px 0px rgba(0,0,0,.12), 0 1px 3px 0 rgba(0,0,0,0.7), 0 1px 3px 0 rgba(0,0,0,.12);
+}

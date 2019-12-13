@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { Router } from '@angular/router';
-import { plans } from 'src/app/model/subscription';
+import { plans, Plan } from 'src/app/model/subscription';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-mysub',
@@ -20,7 +21,8 @@ export class MysubComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private el: ElementRef
+    private el: ElementRef,
+    private service: UserService
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,18 @@ export class MysubComponent implements OnInit {
         this.route.navigate(['subscription/Channels']);
         break;
       default: break;
+    }
+  }
+
+  recharge(plan: Plan, index: number){
+    if(plan) {
+      this.service.rechargeAccount(plan).then(data => {
+        if(data.id !== null || data.id !== ""){
+          this.user.balance += plan.amount;
+          this.service.updateUser(this.user);
+        }
+      });
+
     }
   }
 

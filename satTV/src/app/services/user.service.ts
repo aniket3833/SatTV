@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Package } from '../model/subscription';
+import { Package, Transaction, Plan } from '../model/subscription';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { throwError, Observable, of, BehaviorSubject } from 'rxjs';
@@ -16,7 +16,8 @@ export class UserService {
 
   isLogin: boolean = null;
   url = environment.firebaseConfig.databaseURL;
-  db = environment.collection;
+  userDB = environment.collection.user;
+  txDB = environment.collection.transaction;
 
   constructor(private httpClient: HttpClient, private firestore: AngularFirestore) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
@@ -29,7 +30,7 @@ export class UserService {
   }
 
   getUser(email: string, phone: number) {
-    return this.firestore.collection(this.db).snapshotChanges();
+    return this.firestore.collection(this.userDB).snapshotChanges();
   }
 
   loggedOut() {
@@ -38,11 +39,21 @@ export class UserService {
   }
 
   addUser(user: any) {
-    return this.firestore.collection(this.db).add(user);
+    return this.firestore.collection(this.userDB).add(user);
+  }
+
+  updateUser(user: any) {
+    return this.firestore.doc(this.userDB + '/' + user.id).update(user);
   }
 
   subscribePackage(pack: Package) {
 
+  }
+
+  rechargeAccount(plan: Plan) {
+    let tx = new Transaction(this.CurrentUserValue.email, plan, 'tx_' + Math.floor(100000000 + Math.random() * 900000000), new Date());
+    tx = JSON.parse(JSON.stringify(tx));
+    return this.firestore.collection(this.txDB).add(tx);
   }
 
   getUserSession(): Observable<boolean> {

@@ -105,7 +105,7 @@
         </div>
     </section>
     <h5 class="row"> Available Recharge Plans</h5>
-    <mat-card class="example-card list-item top-ups" *ngFor="let plan of plans">
+    <mat-card class="example-card list-item top-ups" *ngFor="let plan of plans; let i = index">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{plan.name}}</mat-card-title>
@@ -121,5 +121,10 @@
                 {{plan.amount}}
             </h1>
         </mat-card-content>
+        <mat-card-actions>
+            <button mat-button mat-raised-button color="primary" (click)="recharge(plan, i)">
+                Recharge
+            </button>
+        </mat-card-actions>
     </mat-card>
 </div>

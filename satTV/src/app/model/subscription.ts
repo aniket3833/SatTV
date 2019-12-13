@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export class Package {
     name: string;
     type: string;
@@ -35,6 +37,20 @@ export class Plan {
     type: string;
     amount: number;
     imgsrc: string;
+}
+
+export class Transaction {
+    user: string;
+    plan: Plan;
+    txid: string;
+    txdt: Date
+
+    constructor(user: string, plan: Plan, txid: string, txdt: Date) {
+        this.user = user;
+        this.plan = plan;
+        this.txid = txid;
+        this.txdt = txdt;
+    }
 }
 
 export let packages: Package[] = [

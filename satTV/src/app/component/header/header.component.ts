@@ -6,17 +6,9 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnChanges {
-  isLogin: any = false;
-  constructor(private service: UserService) { }
+export class HeaderComponent implements OnInit {
 
-  ngOnChanges() {
-    if(this.service.currentUser) {
-      this.isLogin = true;
-    } else {
-      this.isLogin = false;
-    }
-  }
+  constructor() { }
 
   ngOnInit() {
   }
