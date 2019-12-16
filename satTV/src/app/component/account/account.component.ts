@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { SharedService } from 'src/app/services/shared.service';
+import { PushNotificationOptions } from 'src/app/model/pushNotificationOptions';
 
 @Component({
   selector: 'app-account',
@@ -18,6 +20,7 @@ export class AccountComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private service: UserService,
+    private notify: SharedService,
     private route: Router
     ) {
       if(this.service.CurrentUserValue) {
@@ -51,7 +54,15 @@ export class AccountComponent implements OnInit {
               console.log('Logged In Successfully');
            } else {
              console.log("user not found");
-             this.error.message = "User not found";
+             this.notify.requestPermission().subscribe(permit => {
+               if(this.notify.isPermissionGranted(permit)) {
+                  let options = new PushNotificationOptions();
+                  options.body = "Please check the credentials"
+                  this.notify.create("User Login Error", options).subscribe(resp => {
+                    console.log(resp);
+                  });
+               }
+             })
            }
          })
        }, error => {

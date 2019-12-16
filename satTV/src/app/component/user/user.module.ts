@@ -20,6 +20,7 @@ import {
   MatGridListModule
 } from '@angular/material';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @NgModule({
   declarations: [MysubComponent, AccountDetailsComponent],
@@ -39,6 +40,6 @@ import { UserService } from 'src/app/services/user.service';
     MatInputModule,
     MatGridListModule
   ],
-  providers:[UserService]
+  providers:[UserService, SharedService]
 })
 export class UserModule { }

@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { PushNotificationService } from 'ngx-push-notifications';
 
 import {
   MatRadioModule,
@@ -59,7 +60,7 @@ import {
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [PushNotificationService],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
