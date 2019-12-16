@@ -1,5 +1,5 @@
 <div class="list-channels">
-    <mat-card class="example-card list-item" *ngFor="let channel of channels; let i = index">
+    <mat-card class="example-card list-item" *ngFor="let channel of channels | orderBy: order : false : false; let i = index">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{channel.name}}</mat-card-title>
@@ -11,12 +11,12 @@
                 {{channel.desc}}
             </p>
         </mat-card-content>
-        <mat-card-actions [hidden]="user.cr_channel?.length >= channels.length">
+        <mat-card-actions>
             <button 
                 mat-button 
                 mat-raised-button 
                 color="primary" 
-                [disabled]="user.cr_channel[i]?.name == channel.name || user.cr_pack?.channelList[i] == channel.name"
+                [disabled]="channel.isActive == 1"
                 (click)="subscribe(channel, i, 'channel')"
             >
                 SUBSCRIBE

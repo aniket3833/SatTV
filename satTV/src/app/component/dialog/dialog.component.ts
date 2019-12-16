@@ -41,44 +41,44 @@ export class DialogComponent implements OnInit {
   subscribeTo(form: any) {
     if(form.value.period != undefined) {
       this.data.subDt = new Date().toString();
-      this.data.expDt = this.addDays(new Date(), parseInt(form.getRawValue().period)); 
+      this.data.expDt = this.addDays(new Date(), parseInt(form.getRawValue().period) * 30); 
       this.data.isActive = 1;
       switch(this.data.type) {
         case "GP":
-          if(this.user.balance > this.data.price) {
-            this.user.balance -= (form.value.period == '90') ? (this.data.price * 0.9): this.data.price;
+          if(this.user.balance > (this.data.price * form.value.period)) {
+            this.user.balance -= (form.value.period == 3 ) ? (this.data.price * 3 * 0.9): this.data.price * form.value.period;
             this.user.cr_pack = this.data;
           } else {
             console.log("Your account balance is low. Please recharge your account");
           }
           break;
         case "SP": 
-          if(this.user.balance > this.data.price) {
-            this.user.balance -= (form.value.period == '90') ? (this.data.price * 0.9): this.data.price;
+          if(this.user.balance > (this.data.price * form.value.period)) {
+            this.user.balance -= (form.value.period == 3 ) ? (this.data.price * 3 * 0.9): this.data.price * form.value.period;
             this.user.cr_pack = this.data;
           } else {
             console.log("Your account balance is low. Please recharge your account");
           }
           break;
         case "ES": 
-          if(this.user.balance > this.data.price) {
-            this.user.balance -= (form.value.period == '90') ? (this.data.price * 0.9): this.data.price;
+          if(this.user.balance > (this.data.price * form.value.period)) {
+            this.user.balance -= (form.value.period == 3 ) ? (this.data.price * 3 * 0.9): this.data.price * form.value.period;
             this.user.cr_service.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");
           }
           break;
         case "CS": 
-          if(this.user.balance > this.data.price) {
-            this.user.balance -= (form.value.period == '90') ? (this.data.price * 0.9): this.data.price;
+          if(this.user.balance > (this.data.price * form.value.period)) {
+            this.user.balance -= (form.value.period == 3 ) ? (this.data.price * 3 * 0.9): this.data.price * form.value.period;
             this.user.cr_service.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");
           }
           break;
         case "IC":
-          if(this.user.balance > this.data.price) {
-            this.user.balance -= (form.value.period == '90') ? (this.data.price * 0.9): this.data.price;
+          if(this.user.balance > (this.data.price * form.value.period)) {
+            this.user.balance -= (form.value.period == 3 ) ? (this.data.price * 3 * 0.9): this.data.price * form.value.period;
             this.user.cr_channel.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");

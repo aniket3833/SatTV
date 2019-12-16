@@ -63,7 +63,7 @@ export let packages: Package[] = [
         expDt: "",
         subDt: "",
         channelList: [
-            "Zee","Sony","Star Plus","Discovery","NatGeo"
+            "Zee","Sony","Star Plus","Discovery","Nat Geo"
         ],
         isActive: 0
     },
@@ -148,6 +148,24 @@ export let channelsList: Channel[] = [
         expDt: "",
         subDt: "",
         isActive: 0
+    },
+    {
+        name: "History",
+        type: "IC",
+        desc: "History TV",
+        price: 10,
+        expDt: "",
+        subDt: "",
+        isActive: 0
+    },
+    {
+        name: "Star Sports",
+        type: "IC",
+        desc: "Star Sports TV",
+        price: 20,
+        expDt: "",
+        subDt: "",
+        isActive: 0
     }
 ];
 
@@ -156,12 +174,6 @@ export let plans: Plan[] = [
         name: "Bandhan",
         type: "top-up",
         amount: 500,
-        imgsrc: ""
-    },
-    {
-        name: "Freedom",
-        type: "top-up",
-        amount: 1000,
         imgsrc: ""
     },
     {

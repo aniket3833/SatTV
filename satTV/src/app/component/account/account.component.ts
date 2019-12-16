@@ -49,6 +49,9 @@ export class AccountComponent implements OnInit {
               this.service.currentUserSubject.next(this.user);
               this.route.navigate(['/home']);
               console.log('Logged In Successfully');
+           } else {
+             console.log("user not found");
+             this.error.message = "User not found";
            }
          })
        }, error => {

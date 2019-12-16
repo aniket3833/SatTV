@@ -5,6 +5,7 @@ import { SubscriptionRoutingModule } from '../subscription/subscription-routing.
 import { PackagesComponent } from '../subscription/packages/packages.component';
 import { ServicesComponent } from '../subscription/services/services.component';
 import { ChannelsComponent } from '../subscription/channels/channels.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 import {
   MatCardModule,
@@ -22,7 +23,8 @@ import {
     CommonModule,
     SubscriptionRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    OrderModule
   ]
 })
 export class SubscriptionModule { }

@@ -1,6 +1,7 @@
 import { Package, Service, Channel } from './subscription';
 
 export class User {
+    id: string;
     name: string;
     email: string;
     phone: number;

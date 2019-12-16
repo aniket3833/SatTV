@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
-  @Input() services = services;
+  @Input() services = services
   user: any;
   sub_services: Service;
 
@@ -23,6 +23,13 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.service.CurrentUserValue;
+    for(let service of this.user.cr_service) {
+      for(let i=0; i< this.services.length; i++) {
+        if(service.name == this.services[i].name) {
+          this.services[i].isActive = 1;
+        }
+      }
+    }
   }
 
   subscribe(subscription: any, i: number, type: string) {

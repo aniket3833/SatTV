@@ -1,5 +1,5 @@
 <div class="list-services">
-    <mat-card class="example-card list-item" *ngFor="let service of services; let i = index">
+    <mat-card class="example-card list-item" *ngFor="let service of services | orderBy: service.name : false: false ; let i = index">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{service.name}}</mat-card-title>
@@ -11,12 +11,12 @@
                 {{service.desc}}
             </p>
         </mat-card-content>
-        <mat-card-actions [hidden]="user.cr_service?.length >= services.length">
+        <mat-card-actions>
             <button 
                 mat-button 
                 mat-raised-button 
                 color="primary"
-                [disabled]="user.cr_service[i]?.name == service.name"
+                [disabled]="service.isActive == 1"
                 (click)="subscribe(service, i, 'service')"
             >
                 SUBSCRIBE

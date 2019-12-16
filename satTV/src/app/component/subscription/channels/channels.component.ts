@@ -12,7 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ChannelsComponent implements OnInit {
   @Input() channels = channelsList;
-  user: User;
+  user: any;
+  order: string = "name";
 
   constructor(
     private dialog: MatDialog,
@@ -21,6 +22,28 @@ export class ChannelsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.service.CurrentUserValue;
+    //Disabled the Channels which are already Subscribed
+    if(this.user.cr_channel.length > 0) {
+      for(let channel of this.user.cr_channel){
+        for(let i=0; i< this.channels.length ;i++) {
+          if(this.channels[i].name == channel.name){
+            this.channels[i].isActive = 1;
+          }
+        }
+      }
+    }
+
+    //Disabled the Channels which are come along with the Pack
+    if(this.user.cr_pack) {
+      for(let i = 0; i < this.user.cr_pack.channelList.length; i++) {
+        for(let j = 0; j < this.channels.length; j++ ) {
+          if(this.channels[j].name == this.user.cr_pack.channelList[i]){
+            this.channels[j].isActive = 1;
+          }
+        }
+      }
+      this.user.cr_pack.channelList = this.user.cr_pack.channelList.sort();
+    }
   }
 
   subscribe(subscription: any, i: number, type: string) {

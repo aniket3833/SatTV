@@ -19,9 +19,9 @@
         </mat-form-field>       
         <div class="sub-periods" *ngIf="data.type == 'GP' || 'SP'">
             <mat-radio-group aria-label="" [(ngModel)]="period" formControlName="period" required>
-                <mat-radio-button value="30" checked >1 Month</mat-radio-button>
-                <mat-radio-button value="60">2 Month</mat-radio-button>
-                <mat-radio-button value="90">3 Month</mat-radio-button>
+                <mat-radio-button value= 1 checked >1 Month</mat-radio-button>
+                <mat-radio-button value= 2 >2 Month</mat-radio-button>
+                <mat-radio-button value= 3 >3 Month</mat-radio-button>
             </mat-radio-group>
             <!-- <mat-error [hidden]="!subscriptionForm.controls['period'].errors.required">Please Select the Month</mat-error> -->
         </div>
