@@ -18,7 +18,7 @@
             <input matInput [(ngModel)]="data.price" formControlName="price">
         </mat-form-field>       
         <div class="sub-periods" *ngIf="data.type == 'GP' || 'SP'">
-            <mat-radio-group aria-label="" [(ngModel)]="period" formControlName="period" required>
+            <mat-radio-group aria-label="" [(ngModel)]="dailogVal" formControlName="period" required>
                 <mat-radio-button value= 1 checked >1 Month</mat-radio-button>
                 <mat-radio-button value= 2 >2 Month</mat-radio-button>
                 <mat-radio-button value= 3 >3 Month</mat-radio-button>

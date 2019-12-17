@@ -5,8 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { UserRoutingModule } from '../user/user-routing.module';
 import { MysubComponent } from '../user/mysub/mysub.component';
-import { AccountComponent } from '../account/account.component';
 import { AccountDetailsComponent } from '../user/account-details/account-details.component';
+import { UserService } from '../../services/user.service';
+import { SharedService } from '../../services/shared.service';
 
 import {
   MatCardModule,
@@ -19,8 +20,6 @@ import {
   MatInputModule,
   MatGridListModule
 } from '@angular/material';
-import { UserService } from 'src/app/services/user.service';
-import { SharedService } from 'src/app/services/shared.service';
 
 @NgModule({
   declarations: [MysubComponent, AccountDetailsComponent],

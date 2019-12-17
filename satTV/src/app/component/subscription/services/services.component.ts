@@ -14,6 +14,7 @@ export class ServicesComponent implements OnInit {
   @Input() services = services
   user: any;
   sub_services: Service;
+  order: string = 'name';
 
   constructor(
     public dialog: MatDialog,

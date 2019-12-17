@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { UserService } from 'src/app/services/user.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog',
@@ -12,13 +13,15 @@ import { SharedService } from 'src/app/services/shared.service';
 export class DialogComponent implements OnInit {
   subscriptionForm:FormGroup;
   user: any;
+  dailogVal: number = 1;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     private fb: FormBuilder, 
     @Inject(MAT_DIALOG_DATA) public data: any,
     private service: UserService,
-    private notify: SharedService
+    private notify: SharedService,
+    private route: Router
   ) {
       this.user = this.service.CurrentUserValue;
       console.log(data);
@@ -33,7 +36,7 @@ export class DialogComponent implements OnInit {
       name: new FormControl({disabled: true}),
       type: new FormControl(),
       price: new FormControl(),
-      period: new FormControl()
+      period: new FormControl(this.dailogVal)
     });
     this.subscriptionForm.controls['name'].disable();
     this.subscriptionForm.controls['type'].disable();
@@ -94,6 +97,7 @@ export class DialogComponent implements OnInit {
       }
       this.service.updateUser(this.user);
       this.notification({title:'User Account', body: 'User account details has been updated successfully!!'});
+      this.route.navigate(['']);
     } else {
       console.log("Month is not selected");
       this.notification({title:'Validation Error', body: 'Please fill or select the mandatory fields.'});

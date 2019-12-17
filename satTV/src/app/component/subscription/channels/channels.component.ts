@@ -41,7 +41,7 @@ export class ChannelsComponent implements OnInit {
     }
 
     //Disabled the Channels which are come along with the Pack
-    if(this.user.cr_pack) {
+    if(this.user.cr_pack && this.user.cr_pack.channelList) {
       for(let i = 0; i < this.user.cr_pack.channelList.length; i++) {
         for(let j = 0; j < this.channels.length; j++ ) {
           if(this.channels[j].name == this.user.cr_pack.channelList[i]){

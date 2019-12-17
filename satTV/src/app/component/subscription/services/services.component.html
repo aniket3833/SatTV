@@ -1,5 +1,5 @@
 <div class="list-services">
-    <mat-card class="example-card list-item" *ngFor="let service of services | orderBy: service.name : false: false ; let i = index">
+    <mat-card class="example-card list-item" *ngFor="let service of services | orderBy: order : false: false ; let i = index">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{service.name}}</mat-card-title>
