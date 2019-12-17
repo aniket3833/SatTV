@@ -11,6 +11,8 @@ import {
   MatCardModule,
   MatButtonModule
 } from '@angular/material';
+import { SharedService } from 'src/app/services/shared.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import {
     MatCardModule,
     MatButtonModule,
     OrderModule
-  ]
+  ],
+  providers:[SharedService, UserService]
 })
 export class SubscriptionModule { }

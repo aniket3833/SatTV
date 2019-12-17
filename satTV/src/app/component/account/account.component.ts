@@ -52,17 +52,10 @@ export class AccountComponent implements OnInit {
               this.service.currentUserSubject.next(this.user);
               this.route.navigate(['/home']);
               console.log('Logged In Successfully');
+              this.notify.notifyUser({title: "SatTV User Login", body: "Logged In Successfully"})
            } else {
              console.log("user not found");
-             this.notify.requestPermission().subscribe(permit => {
-               if(this.notify.isPermissionGranted(permit)) {
-                  let options = new PushNotificationOptions();
-                  options.body = "Please check the credentials"
-                  this.notify.create("User Login Error", options).subscribe(resp => {
-                    console.log(resp);
-                  });
-               }
-             })
+             this.notify.notifyUser({title: "SatTV User Login Error", body: "Please check the credentials"})
            }
          })
        }, error => {

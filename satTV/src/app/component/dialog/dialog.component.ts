@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-dialog',
@@ -16,7 +17,8 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     private fb: FormBuilder, 
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private service: UserService
+    private service: UserService,
+    private notify: SharedService
   ) {
       this.user = this.service.CurrentUserValue;
       console.log(data);
@@ -50,6 +52,7 @@ export class DialogComponent implements OnInit {
             this.user.cr_pack = this.data;
           } else {
             console.log("Your account balance is low. Please recharge your account");
+            this.notification({title:'User Account', body: 'Your account balance is low. Please recharge your account.'});
           }
           break;
         case "SP": 
@@ -58,6 +61,7 @@ export class DialogComponent implements OnInit {
             this.user.cr_pack = this.data;
           } else {
             console.log("Your account balance is low. Please recharge your account");
+            this.notification({title:'User Account', body: 'Your account balance is low. Please recharge your account.'});
           }
           break;
         case "ES": 
@@ -66,6 +70,7 @@ export class DialogComponent implements OnInit {
             this.user.cr_service.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");
+            this.notification({title:'User Account', body: 'Your account balance is low. Please recharge your account.'});
           }
           break;
         case "CS": 
@@ -74,6 +79,7 @@ export class DialogComponent implements OnInit {
             this.user.cr_service.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");
+            this.notification({title:'User Account', body: 'Your account balance is low. Please recharge your account.'});
           }
           break;
         case "IC":
@@ -82,12 +88,15 @@ export class DialogComponent implements OnInit {
             this.user.cr_channel.push(this.data);
           } else {
             console.log("Your account balance is low. Please recharge your account");
+            this.notification({title:'User Account', body: 'Your account balance is low. Please recharge your account.'});
           }
           break; 
       }
       this.service.updateUser(this.user);
+      this.notification({title:'User Account', body: 'User account details has been updated successfully!!'});
     } else {
-      console.log("Month is not selected")
+      console.log("Month is not selected");
+      this.notification({title:'Validation Error', body: 'Please fill or select the mandatory fields.'});
     }
     
   }
@@ -99,6 +108,13 @@ export class DialogComponent implements OnInit {
   addDays(date: Date, days: number): string {
     date.setDate(date.getDate() + days);
     return date.toString();
+  }
+
+  notification(payload: any) {
+    this.notify.notifyUser({
+      title: payload.title,
+      body: payload.body
+    });
   }
 
 }

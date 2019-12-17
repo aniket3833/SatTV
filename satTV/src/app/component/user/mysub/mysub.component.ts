@@ -3,6 +3,7 @@ import { User } from 'src/app/model/user';
 import { Router } from '@angular/router';
 import { plans, Plan } from 'src/app/model/subscription';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-mysub',
@@ -22,7 +23,8 @@ export class MysubComponent implements OnInit {
   constructor(
     private route: Router,
     private el: ElementRef,
-    private service: UserService
+    private service: UserService,
+    private notify: SharedService
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,12 @@ export class MysubComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
     if(this.user) {
       this.getSubscriptionsForUser(this.user);
+    } else {
+      this.service.loggedOut();
+      this.notify.notifyUser({
+        title: "Login Error",
+        body: "User not found. Please login again"
+      });
     }
   }
 
@@ -61,9 +69,17 @@ export class MysubComponent implements OnInit {
         if(data.id !== null || data.id !== ""){
           this.user.balance += plan.amount;
           this.service.updateUser(this.user);
+          this.notify.notifyUser({
+            title: "Account Balance",
+            body: 'Recharged your account successfully!'
+          });
+        } else {
+          this.notify.notifyUser({
+            title: 'Account Balance',
+            body: 'Oops!! Something went wrong. Please try again later.'
+          });
         }
       });
-
     }
   }
 

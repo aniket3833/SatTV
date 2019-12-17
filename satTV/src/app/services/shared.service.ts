@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PushNotificationService } from 'ngx-push-notifications';
 import { PushNotificationOptions } from '../model/pushNotificationOptions';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -73,5 +73,21 @@ export class SharedService {
         }
       });
     });
+  }
+
+  notifyUser(payload: any) { 
+    this.requestPermission().subscribe(permit => {
+      if(this.isPermissionGranted(permit)) {
+        let options = new PushNotificationOptions();
+        options.body = payload.body;
+        this.create(payload.title, options).subscribe(resp => {
+          console.log(resp);
+        })
+      } else {
+        alert("Notification permission not granted!");
+        throwError("Notification permission not granted!");
+      }
+    });
+    
   }
 }

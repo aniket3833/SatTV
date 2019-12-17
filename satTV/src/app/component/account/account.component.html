@@ -23,6 +23,7 @@
                 *ngIf="loginForm.controls['phone'].errors && (loginForm.get('phone').touched || loginForm.get('phone').dirty)"
                 class="error">
                 <div *ngIf="loginForm.controls['phone'].errors.required">Number is required</div>
+                <div *ngIf="loginForm.controls['phone'].errors?.pattern">Not Valid Number</div>
             </mat-error>
             <div class="container-login100-form-btn">
                 <button mat-raised-button type="reset" class="login100-form-btn">

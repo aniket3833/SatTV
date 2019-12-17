@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-account-details',
@@ -16,7 +17,8 @@ export class AccountDetailsComponent implements OnInit {
   constructor(
     private service: UserService,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private notify: SharedService
   ) 
   {
     this.user = this.service.CurrentUserValue;
@@ -40,8 +42,17 @@ export class AccountDetailsComponent implements OnInit {
     if(this.loginForm.valid){
       this.service.updateUser(this.user).then( resp => {
         console.log(resp);
+        this.notify.notifyUser({
+          title: 'User Updated',
+          body: 'User data has been updated successfully!!'
+        });
         this.service.loggedOut();
         this.route.navigate(['']);
+      });
+    } else {
+      this.notify.notifyUser({
+        title: 'Validations Failed',
+        body: 'Please fill the all the fields'
       });
     }
   }

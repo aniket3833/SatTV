@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { User } from 'src/app/model/user';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-channels',
@@ -17,7 +18,8 @@ export class ChannelsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private service: UserService
+    private service: UserService,
+    private notify: SharedService
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,11 @@ export class ChannelsComponent implements OnInit {
           }
         }
       }
+    } else {
+      this.notify.notifyUser({
+        title: 'About Channel Subscription',
+        body: 'You have not subscribe any Channel yet!'
+      })
     }
 
     //Disabled the Channels which are come along with the Pack
@@ -43,6 +50,12 @@ export class ChannelsComponent implements OnInit {
         }
       }
       this.user.cr_pack.channelList = this.user.cr_pack.channelList.sort();
+    }
+    else {
+      this.notify.notifyUser({
+        title: 'About Pack Subscription',
+        body: 'You have not subscribe any Package yet!'
+      })
     }
   }
 

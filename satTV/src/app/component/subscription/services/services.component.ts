@@ -3,6 +3,7 @@ import { services, Service } from '../../../model/subscription'
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-services',
