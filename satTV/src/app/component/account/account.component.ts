@@ -67,22 +67,4 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  registerUser() {
-    var user = {
-      name: "Aniket Kalsekar",
-      email: "aniketjk@gmail.com",
-      phone: 7385700517,
-      balance: 100,
-      cr_pack: {},
-      cr_service: [{}],
-      cr_channel: [{}],
-      isActive: 1,
-    }
-    return this.service.addUser(user).then(resp => {
-      console.log(resp);
-    }).catch(error => {
-      console.log(error)
-    });
-  }
-
 }

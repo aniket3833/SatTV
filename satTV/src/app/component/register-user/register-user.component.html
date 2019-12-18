@@ -1,34 +1,35 @@
 <mat-card class="card-layout">
     <div class="member-form">
-        <form class="login100-form validate-form form" [formGroup]="loginForm" (ngSubmit)="updateUser()"
+        <form class="login100-form validate-form form" [formGroup]="enrollForm" (ngSubmit)="registerUser()"
             autocomplete="off">
             <mat-form-field
                 appearance="outline"
                 class="wrap-input100 validate-input m-b-26 form-group" >
                 <mat-label class="label-input100">Name</mat-label>
-                <input matInput class="input100" [(ngModel)]="user.name" type="text" placeholder="Enter your name" formControlName="name"> 
+                <input matInput class="input100" type="text" placeholder="Enter your name" formControlName="name"> 
             </mat-form-field>
-            <mat-error *ngIf="loginForm.controls['name'].errors && (loginForm.get('name').touched || loginForm.get('name').dirty)"
+            <mat-error *ngIf="enrollForm.controls['name'].errors && (enrollForm.get('name').touched || enrollForm.get('name').dirty)"
             class="error">
-                <div *ngIf="loginForm.controls['name'].errors?.pattern" class="error">
+                <div *ngIf="enrollForm.controls['name'].errors?.pattern" class="error">
                     name is not valid
                 </div>
-                <div *ngIf="loginForm.controls['name'].errors.required" class="error">
+                <div *ngIf="enrollForm.controls['name'].errors.required" class="error">
                     name is required
                 </div>
             </mat-error>
+            
             <mat-form-field 
                 appearance="outline" 
                 class="wrap-input100 validate-input m-b-26 form-group">
                 <mat-label class="label-input100">Email</mat-label>
-                <input matInput class="input100" [(ngModel)]="user.email" type="email" placeholder="Enter Email address" formControlName="email">
+                <input matInput class="input100" type="email" placeholder="Enter Email address" formControlName="email">
             </mat-form-field>
             <mat-error
-                *ngIf="loginForm.controls['email'].errors && (loginForm.get('email').touched || loginForm.get('email').dirty)"
+                *ngIf="enrollForm.controls['email'].errors && (enrollForm.get('email').touched || enrollForm.get('email').dirty)"
                 class="error">
-                <div *ngIf="loginForm.controls['email'].errors.required">Email address is required</div>
+                <div *ngIf="enrollForm.controls['email'].errors.required">Email address is required</div>
             </mat-error>
-            <mat-error *ngIf="loginForm.controls['email'].errors?.pattern" class="error">
+            <mat-error *ngIf="enrollForm.controls['email'].errors?.pattern" class="error">
                 Employee email address is not valid
             </mat-error>
 
@@ -36,15 +37,15 @@
                 appearance="outline" 
                 class="wrap-input100 validate-input m-b-26 form-group">
                 <mat-label class="label-input100">Mobile</mat-label>
-                <input matInput class="input100" [(ngModel)]="user.phone" type="tel" placeholder="Enter Mobile Number" formControlName="phone">
+                <input matInput class="input100"  type="tel" placeholder="Enter Mobile Number" formControlName="phone">
             </mat-form-field>
             <mat-error
-                *ngIf="loginForm.controls['phone'].errors && (loginForm.get('phone').touched || loginForm.get('phone').dirty)"
+                *ngIf="enrollForm.controls['phone'].errors && (enrollForm.get('phone').touched || enrollForm.get('phone').dirty)"
                 class="error">
-                <div *ngIf="loginForm.controls['phone'].errors.required">Number is required</div>
+                <div *ngIf="enrollForm.controls['phone'].errors.required">Number is required</div>
             </mat-error>
             <div class="container-login100-form-btn">
-                <button mat-raised-button type="reset" class="login100-form-btn">
+                <button mat-raised-button type="reset" class="login100-form-btn" [routerLink]="['']" routerLinkActive="router-link-active" >
                     Cancel
                 </button>
                 <button mat-raised-button color="primary" type="submit" class="login100-form-btn">

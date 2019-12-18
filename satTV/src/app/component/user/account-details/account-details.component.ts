@@ -30,7 +30,7 @@ export class AccountDetailsComponent implements OnInit {
 
   formInit() {
     this.loginForm = this.fb.group({
-      name: new FormControl(this.user.name, [Validators.pattern("^[a-zA-Z ]*$")]),
+      name: new FormControl(this.user.name, [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
       email: new FormControl(this.user.email, [Validators.required, Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")]),
       phone: new FormControl(this.user.phone, [Validators.required, Validators.maxLength(10), Validators.pattern("^[0-9]*$")])
     })

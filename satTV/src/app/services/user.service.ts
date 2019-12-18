@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Package, Transaction, Plan } from '../model/subscription';
+import { Transaction, Plan } from '../model/subscription';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { throwError, Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'src/app/model/user';
 
@@ -48,22 +48,10 @@ export class UserService {
     return this.firestore.doc(this.userDB + '/' + user.id).update(user);
   }
 
-  subscribePackage(pack: Package) {
-
-  }
-
   rechargeAccount(plan: Plan) {
     let tx = new Transaction(this.CurrentUserValue.email, plan, 'tx_' + Math.floor(100000000 + Math.random() * 900000000), new Date().toString());
     tx = JSON.parse(JSON.stringify(tx));
     return this.firestore.collection(this.txDB).add(tx);
-  }
-
-  getUserSession(): Observable<boolean> {
-    if(this.isLogin !== null){
-      return of(this.isLogin);
-    } else {
-      return of(false);
-    }
   }
 
 }

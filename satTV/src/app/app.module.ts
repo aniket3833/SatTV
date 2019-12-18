@@ -10,6 +10,7 @@ import { HomeComponent } from './component/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { DialogComponent } from './component/dialog/dialog.component';
 import { AccountComponent } from './component/account/account.component';
+import { RegisterUserComponent } from './component/register-user/register-user.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -38,7 +39,8 @@ import {
     HomeComponent,
     HeaderComponent,
     DialogComponent,
-    AccountComponent
+    AccountComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

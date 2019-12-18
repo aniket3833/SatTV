@@ -81,7 +81,7 @@ export class SharedService {
         let options = new PushNotificationOptions();
         options.body = payload.body;
         this.create(payload.title, options).subscribe(resp => {
-          console.log(resp);
+          //console.log(resp);
         })
       } else {
         alert("Notification permission not granted!");
